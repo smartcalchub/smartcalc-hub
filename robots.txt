@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smartcalchub.github.io/smartcalc-hub/sitemap.xml
