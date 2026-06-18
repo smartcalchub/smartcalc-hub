@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartCalc Hub | Professional Calculators</title>
+<meta name="description" content="Free professional calculators and practical guides for finance, procurement, logistics, business and health.">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--text:#172033;--muted:#667085;--pri:#2563eb;--pri2:#1e40af;--bd:#e5e7eb;--soft:#eff6ff;--soft2:#f8fafc}
+body.dark{--bg:#0f172a;--card:#111827;--text:#f9fafb;--muted:#cbd5e1;--pri:#60a5fa;--pri2:#3b82f6;--bd:#334155;--soft:#172554;--soft2:#1e293b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Microsoft YaHei",sans-serif}
+.hero{background:linear-gradient(135deg,#1e3a8a,#2563eb,#38bdf8);color:#fff;text-align:center;padding:44px 16px}
+.hero h1{margin:0;font-size:42px}
+.hero p{line-height:1.7;max-width:900px;margin:12px auto}
+.btn{border:1px solid #ffffff55;background:#ffffff22;color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;margin:4px}
+.wrap{max-width:1200px;margin:auto;padding:20px 16px 44px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-28px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:17px;text-align:center;box-shadow:0 10px 25px #0001}
+.stat b{font-size:24px;color:var(--pri);display:block}
+.ad{background:var(--card);border:1px dashed var(--bd);color:var(--muted);border-radius:14px;text-align:center;padding:14px;margin:18px 0}
+.searchbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0}
+.searchbar input{width:100%;padding:14px;border:1px solid var(--bd);border-radius:14px;background:var(--card);color:var(--text);font-size:16px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat,.card,.seo{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:18px;box-shadow:0 10px 25px #0001}
+.cat h2{font-size:19px;margin:0 0 10px}
+.tool{width:100%;margin:4px 0;text-align:left;background:var(--soft2);color:var(--text);border:1px solid var(--bd);border-radius:12px;padding:11px;cursor:pointer}
+.tool:hover,.tool.active{background:var(--pri);color:#fff}
+.card{display:none;margin-top:18px;padding:24px}
+.card.active{display:block}
+.head{display:flex;justify-content:space-between;gap:12px}
+.badge{background:var(--soft);color:var(--pri);border-radius:999px;padding:7px 10px;font-size:13px;height:max-content}
+.fav{border:1px solid var(--bd);background:var(--card);color:var(--text);border-radius:999px;padding:8px 12px;cursor:pointer}
+h3{font-size:26px;margin:0 0 8px}
+p{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-weight:bold;margin-top:10px;font-size:14px}
+input,select{width:100%;padding:12px;margin-top:6px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--text);font-size:16px}
+.calc{width:100%;margin-top:18px;border:0;border-radius:14px;padding:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:bold;font-size:17px;cursor:pointer}
+.result{display:none;background:var(--soft);border-left:5px solid var(--pri);border-radius:14px;padding:16px;margin-top:18px;line-height:1.85}
+.guide{border-top:1px solid var(--bd);margin-top:20px;padding-top:16px}
+.guidegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.box{background:var(--soft2);border:1px solid var(--bd);border-radius:14px;padding:14px}
+.box h4{margin:0 0 8px}
+.code{font-family:monospace;background:var(--card);border:1px solid var(--bd);padding:8px;border-radius:8px;display:block}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:950px){.cats,.stats{grid-template-columns:1fr 1fr}.hero h1{font-size:34px}}
+@media(max-width:650px){.cats,.stats,.grid,.guidegrid{grid-template-columns:1fr}.hero h1{font-size:28px}.head{display:block}.card{padding:18px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<h1>SmartCalc Hub</h1>
+<p>Professional calculators & practical guides for Finance, Procurement, Logistics, Business and Health.<br>专业计算器与实用指南：财务、采购、物流、商业与健康。</p>
+<button class="btn" id="darkBtn">🌙 Dark Mode</button>
+<button class="btn" onclick="document.getElementById('tools').scrollIntoView()">Start Calculating / 开始计算</button>
+</header>
+
+<main class="wrap">
+<div class="stats">
+<div class="stat"><b>20+</b>Calculators</div>
+<div class="stat"><b>4</b>Categories</div>
+<div class="stat"><b>Guide</b>Formula + FAQ</div>
+<div class="stat"><b>SEO</b>Ready</div>
+</div>
+
+<div class="ad">Ad Space / Google AdSense Banner 广告位</div>
+
+<div class="searchbar"><input id="search" placeholder="Search tools... 搜索工具：CBM, BMI, Salary"></div>
+
+<section class="cats" id="tools">
+<div class="cat"><h2>💰 Finance</h2>
+<button class="tool active" data-tool="salary">Salary / 薪水</button>
+<button class="tool" data-tool="loan">Loan / 贷款</button>
+<button class="tool" data-tool="car">Car Loan / 车贷</button>
+<button class="tool" data-tool="mortgage">Mortgage / 房贷</button>
+<button class="tool" data-tool="currency">Currency / 汇率</button>
+<button class="tool" data-tool="profit">Profit Margin / 利润率</button>
+</div>
+<div class="cat"><h2>📦 Procurement</h2>
+<button class="tool" data-tool="quantity">Quantity / 数量</button>
+<button class="tool" data-tool="packaging">Packaging / 包装</button>
+<button class="tool" data-tool="cbm">CBM / 体积</button>
+<button class="tool" data-tool="vol">Volumetric Weight / 体积重量</button>
+<button class="tool" data-tool="moq">MOQ / 最低订购量</button>
+<button class="tool" data-tool="saving">Cost Saving / 节省成本</button>
+<button class="tool" data-tool="curmargin">Currency Margin / 汇率利润</button>
+<button class="tool" data-tool="unit">Unit Converter / 单位转换</button>
+</div>
+<div class="cat"><h2>🏢 Business</h2>
+<button class="tool" data-tool="vat">GST / VAT / 税额</button>
+<button class="tool" data-tool="markup">Markup / 加价</button>
+<button class="tool" data-tool="discount">Discount / 折扣</button>
+<button class="tool" data-tool="breakeven">Break-even / 盈亏平衡</button>
+<button class="tool" data-tool="selling">Selling Price / 售价</button>
+</div>
+<div class="cat"><h2>❤️ Health</h2>
+<button class="tool" data-tool="bmi">BMI / 身体质量指数</button>
+<button class="tool" data-tool="bmr">BMR / 基础代谢</button>
+<button class="tool" data-tool="tdee">TDEE / 每日消耗</button>
+<button class="tool" data-tool="water">Water Intake / 饮水量</button>
+<button class="tool" data-tool="ideal">Ideal Weight / 理想体重</button>
+</div>
+</section>
+
+<section id="salary" class="card active">
+<div class="head"><div><h3>💰 Salary Calculator / 薪水计算器</h3><p>Calculate monthly and annual gross/net salary clearly.</p></div><button class="fav" data-fav="salary">☆ Favorite</button></div>
+<div class="grid">
+<div><label>Salary Type / 薪水类型</label><select id="salPeriod"><option value="monthly">Monthly Gross Salary / 月薪</option><option value="annual">Annual Gross Salary / 年薪</option></select></div>
+<div><label>Gross Salary Amount / 总薪水</label><input id="salGross" type="number" placeholder="3000"></div>
+<div><label>Tax % / 税率 %</label><input id="salTax" type="number" value="0"></div>
+<div><label>Deduction % / 扣款 %</label><input id="salDeduct" type="number" value="0"></div>
+<div><label>Fixed Deduction Per Month / 每月固定扣款</label><input id="salFixed" type="number" value="0"></div>
+</div><button class="calc" data-calc="salary">Calculate / 计算</button><div id="salaryResult" class="result"></div>
+<div class="guide"><div class="guidegrid"><div class="box"><h4>What is it?</h4><p>Estimates take-home pay after tax and deductions.</p></div><div class="box"><h4>Formula</h4><span class="code">Net Salary = Gross - Tax - Deduction</span></div><div class="box"><h4>Example</h4><p>Monthly gross 3,000 × 12 = Annual gross 36,000.</p></div><div class="box"><h4>FAQ</h4><p>Actual payroll depends on local laws and company rules.</p></div></div></div>
+</section>
+
+<section id="loan" class="card"><div class="head"><div><h3>🏦 Loan Calculator / 贷款计算器</h3><p>Calculate monthly repayment, total interest and total repayment.</p></div><button class="fav" data-fav="loan">☆ Favorite</button></div><div class="grid"><div><label>Loan Amount / 贷款金额</label><input id="loanAmount" type="number"></div><div><label>Annual Interest Rate % / 年利率 %</label><input id="loanRate" type="number"></div><div><label>Loan Tenure (Years) / 贷款年限</label><input id="loanYears" type="number"></div></div><button class="calc" data-calc="loan">Calculate / 计算</button><div id="loanResult" class="result"></div></section>
+
+<section id="car" class="card"><div class="head"><div><h3>🚗 Car Loan Calculator / 车贷计算器</h3><p>Estimate car loan installment after down payment.</p></div><button class="fav" data-fav="car">☆ Favorite</button></div><div class="grid"><div><label>Car Price / 车价</label><input id="carPrice" type="number"></div><div><label>Down Payment / 头期</label><input id="carDown" type="number"></div><div><label>Annual Interest Rate % / 年利率 %</label><input id="carRate" type="number"></div><div><label>Loan Tenure (Years) / 年限</label><input id="carYears" type="number"></div></div><button class="calc" data-calc="car">Calculate / 计算</button><div id="carResult" class="result"></div></section>
+
+<section id="mortgage" class="card"><div class="head"><div><h3>🏠 Mortgage Calculator / 房贷计算器</h3><p>Estimate home loan repayment.</p></div><button class="fav" data-fav="mortgage">☆ Favorite</button></div><div class="grid"><div><label>House Price / 房价</label><input id="housePrice" type="number"></div><div><label>Down Payment / 头期</label><input id="houseDown" type="number"></div><div><label>Annual Interest Rate % / 年利率 %</label><input id="houseRate" type="number"></div><div><label>Loan Tenure (Years) / 年限</label><input id="houseYears" type="number"></div></div><button class="calc" data-calc="mortgage">Calculate / 计算</button><div id="houseResult" class="result"></div></section>
+
+<section id="currency" class="card"><div class="head"><div><h3>💱 Currency Converter / 汇率转换</h3><p>Manual exchange rate converter.</p></div><button class="fav" data-fav="currency">☆ Favorite</button></div><div class="grid"><div><label>Amount / 金额</label><input id="curAmount" type="number"></div><div><label>Exchange Rate / 汇率</label><input id="curRate" type="number"></div></div><button class="calc" data-calc="currency">Calculate / 计算</button><div id="currencyResult" class="result"></div></section>
+
+<section id="profit" class="card"><div class="head"><div><h3>📈 Profit Margin Calculator / 利润率计算器</h3><p>Calculate profit, margin and markup.</p></div><button class="fav" data-fav="profit">☆ Favorite</button></div><div class="grid"><div><label>Cost Price / 成本价</label><input id="profitCost" type="number"></div><div><label>Selling Price / 售价</label><input id="profitSell" type="number"></div></div><button class="calc" data-calc="profit">Calculate / 计算</button><div id="profitResult" class="result"></div></section>
+
+<section id="quantity" class="card"><div class="head"><div><h3>📦 Quantity Calculator / 数量计算器</h3><p>Calculate quantity from running numbers.</p></div><button class="fav" data-fav="quantity">☆ Favorite</button></div><div class="grid"><div><label>Start Number / 开始号码</label><input id="qStart" type="number" value="1"></div><div><label>End Number / 结束号码</label><input id="qEnd" type="number" value="100"></div><div><label>Qty per Pack / 每包数量</label><input id="qPack" type="number" value="50"></div><div><label>Packs per Carton / 每箱多少包</label><input id="qCarton" type="number" value="8"></div></div><button class="calc" data-calc="quantity">Calculate / 计算</button><div id="quantityResult" class="result"></div><div class="guide"><div class="guidegrid"><div class="box"><h4>Guide</h4><p>Useful for receipts, tickets, invoice books and serial numbers.</p></div><div class="box"><h4>Formula</h4><span class="code">Total = End Number - Start Number + 1</span></div></div></div></section>
+
+<section id="packaging" class="card"><div class="head"><div><h3>📦 Packaging Calculator / 包装计算器</h3><p>Calculate packs, cartons and pallets from total quantity.</p></div><button class="fav" data-fav="packaging">☆ Favorite</button></div><div class="grid"><div><label>Total Quantity / 总数量</label><input id="packTotalQty" type="number" placeholder="2357"></div><div><label>Qty per Pack / 每包数量</label><input id="packQtyPerPack" type="number" placeholder="50"></div><div><label>Packs per Carton / 每箱多少包</label><input id="packPerCarton" type="number" placeholder="8"></div><div><label>Cartons per Pallet / 每托盘多少箱</label><input id="cartonPerPallet" type="number" placeholder="20"></div></div><button class="calc" data-calc="packaging">Calculate / 计算</button><div id="packagingResult" class="result"></div></section>
+
+<section id="cbm" class="card"><div class="head"><div><h3>📏 CBM Calculator / CBM 体积计算器</h3><p>Calculate shipment volume in cubic meters.</p></div><button class="fav" data-fav="cbm">☆ Favorite</button></div><div class="grid"><div><label>Length / 长</label><input id="cbmL" type="number"></div><div><label>Width / 宽</label><input id="cbmW" type="number"></div><div><label>Height / 高</label><input id="cbmH" type="number"></div><div><label>Quantity / 数量</label><input id="cbmQty" type="number" value="1"></div><div><label>Unit / 单位</label><select id="cbmUnit"><option value="mm">mm</option><option value="cm">cm</option><option value="m">m</option><option value="inch">inch</option></select></div></div><button class="calc" data-calc="cbm">Calculate / 计算</button><div id="cbmResult" class="result"></div><div class="guide"><div class="guidegrid"><div class="box"><h4>What is CBM?</h4><p>CBM means cubic meter, used in shipping and warehouse planning.</p></div><div class="box"><h4>Formula</h4><span class="code">CBM = Length × Width × Height</span></div><div class="box"><h4>Example</h4><p>400 × 320 × 210 mm = 0.02688 CBM.</p></div><div class="box"><h4>FAQ</h4><p>CBM is used for sea freight, storage and cargo planning.</p></div></div></div></section>
+
+<section id="vol" class="card"><div class="head"><div><h3>✈️ Volumetric Weight / 体积重量计算器</h3><p>Common courier formula: L × W × H ÷ divisor.</p></div><button class="fav" data-fav="vol">☆ Favorite</button></div><div class="grid"><div><label>Length (cm) / 长度</label><input id="volL" type="number"></div><div><label>Width (cm) / 宽度</label><input id="volW" type="number"></div><div><label>Height (cm) / 高度</label><input id="volH" type="number"></div><div><label>Divisor / 除数</label><select id="volDiv"><option value="5000">5000</option><option value="6000">6000</option></select></div></div><button class="calc" data-calc="vol">Calculate / 计算</button><div id="volResult" class="result"></div></section>
+
+<section id="moq" class="card"><div class="head"><div><h3>📋 MOQ Calculator / 最低订购量计算器</h3><p>Calculate order quantity based on MOQ multiple.</p></div><button class="fav" data-fav="moq">☆ Favorite</button></div><div class="grid"><div><label>Required Quantity / 需要数量</label><input id="moqNeed" type="number" placeholder="235"></div><div><label>MOQ Multiple / MOQ 倍数</label><input id="moqMultiple" type="number" placeholder="100"></div></div><button class="calc" data-calc="moq">Calculate / 计算</button><div id="moqResult" class="result"></div></section>
+
+<section id="saving" class="card"><div class="head"><div><h3>💵 Cost Saving Calculator / 成本节省计算器</h3><p>Calculate annual saving after price reduction.</p></div><button class="fav" data-fav="saving">☆ Favorite</button></div><div class="grid"><div><label>Old Price / 原价</label><input id="oldPrice" type="number"></div><div><label>New Price / 新价</label><input id="newPrice" type="number"></div><div><label>Annual Quantity / 年用量</label><input id="annualQty" type="number"></div></div><button class="calc" data-calc="saving">Calculate / 计算</button><div id="savingResult" class="result"></div></section>
+
+<section id="curmargin" class="card"><div class="head"><div><h3>💵 Currency Margin / 汇率利润计算器</h3><p>Convert supplier cost and calculate profit margin.</p></div><button class="fav" data-fav="curmargin">☆ Favorite</button></div><div class="grid"><div><label>Supplier Price / 供应商价格</label><input id="cmSupplier" type="number"></div><div><label>Exchange Rate / 汇率</label><input id="cmRate" type="number"></div><div><label>Selling Price / 售价</label><input id="cmSelling" type="number"></div></div><button class="calc" data-calc="curmargin">Calculate / 计算</button><div id="curMarginResult" class="result"></div></section>
+
+<section id="unit" class="card"><div class="head"><div><h3>📐 Unit Converter / 单位转换器</h3><p>Convert common units used in procurement and logistics.</p></div><button class="fav" data-fav="unit">☆ Favorite</button></div><div class="grid"><div><label>Value / 数值</label><input id="unitValue" type="number"></div><div><label>Conversion / 转换</label><select id="unitType"><option value="mm_cm">mm to cm</option><option value="cm_mm">cm to mm</option><option value="cm_m">cm to m</option><option value="m_cm">m to cm</option><option value="inch_mm">inch to mm</option><option value="mm_inch">mm to inch</option><option value="kg_lb">kg to lb</option><option value="lb_kg">lb to kg</option></select></div></div><button class="calc" data-calc="unit">Calculate / 计算</button><div id="unitResult" class="result"></div></section>
+
+<section id="vat" class="card"><div class="head"><div><h3>🧾 GST / VAT Calculator / 税额计算器</h3><p>Add or remove tax from an amount.</p></div><button class="fav" data-fav="vat">☆ Favorite</button></div><div class="grid"><div><label>Amount / 金额</label><input id="vatAmount" type="number"></div><div><label>Tax Rate % / 税率 %</label><input id="vatRate" type="number" value="9"></div><div><label>Mode / 模式</label><select id="vatMode"><option value="add">Add Tax / 加税</option><option value="remove">Remove Tax / 拆税</option></select></div></div><button class="calc" data-calc="vat">Calculate / 计算</button><div id="vatResult" class="result"></div></section>
+
+<section id="markup" class="card"><div class="head"><div><h3>📊 Markup Calculator / 加价计算器</h3><p>Calculate selling price from cost and markup percentage.</p></div><button class="fav" data-fav="markup">☆ Favorite</button></div><div class="grid"><div><label>Cost Price / 成本价</label><input id="markupCost" type="number"></div><div><label>Markup % / 加价 %</label><input id="markupRate" type="number"></div></div><button class="calc" data-calc="markup">Calculate / 计算</button><div id="markupResult" class="result"></div></section>
+
+<section id="discount" class="card"><div class="head"><div><h3>🏷️ Discount Calculator / 折扣计算器</h3><p>Calculate final price after discount.</p></div><button class="fav" data-fav="discount">☆ Favorite</button></div><div class="grid"><div><label>Original Price / 原价</label><input id="discountPrice" type="number"></div><div><label>Discount % / 折扣 %</label><input id="discountRate" type="number"></div></div><button class="calc" data-calc="discount">Calculate / 计算</button><div id="discountResult" class="result"></div></section>
+
+<section id="breakeven" class="card"><div class="head"><div><h3>⚖️ Break-even Calculator / 盈亏平衡计算器</h3><p>Calculate how many units are needed to cover fixed cost.</p></div><button class="fav" data-fav="breakeven">☆ Favorite</button></div><div class="grid"><div><label>Fixed Cost / 固定成本</label><input id="beFixed" type="number"></div><div><label>Selling Price per Unit / 每件售价</label><input id="beSell" type="number"></div><div><label>Variable Cost per Unit / 每件变动成本</label><input id="beVar" type="number"></div></div><button class="calc" data-calc="breakeven">Calculate / 计算</button><div id="breakevenResult" class="result"></div></section>
+
+<section id="selling" class="card"><div class="head"><div><h3>🏷️ Selling Price Calculator / 售价计算器</h3><p>Calculate selling price by target margin.</p></div><button class="fav" data-fav="selling">☆ Favorite</button></div><div class="grid"><div><label>Cost Price / 成本价</label><input id="sellCost" type="number"></div><div><label>Target Margin % / 目标利润率 %</label><input id="sellMargin" type="number"></div></div><button class="calc" data-calc="selling">Calculate / 计算</button><div id="sellingResult" class="result"></div></section>
+
+<section id="bmi" class="card"><div class="head"><div><h3>⚖️ BMI Calculator / BMI 计算器</h3><p>Calculate Body Mass Index.</p></div><button class="fav" data-fav="bmi">☆ Favorite</button></div><div class="grid"><div><label>Weight (kg) / 体重</label><input id="bmiWeight" type="number"></div><div><label>Height (cm) / 身高</label><input id="bmiHeight" type="number"></div></div><button class="calc" data-calc="bmi">Calculate / 计算</button><div id="bmiResult" class="result"></div><div class="guide"><div class="guidegrid"><div class="box"><h4>What is BMI?</h4><p>BMI estimates whether your weight is healthy for your height.</p></div><div class="box"><h4>Formula</h4><span class="code">BMI = Weight(kg) ÷ Height²(m)</span></div><div class="box"><h4>Category</h4><p>&lt;18.5 Underweight, 18.5–24.9 Normal, 25–29.9 Overweight, 30+ Obese.</p></div><div class="box"><h4>FAQ</h4><p>BMI is a general reference and may not suit athletes with high muscle mass.</p></div></div></div></section>
+
+<section id="bmr" class="card"><div class="head"><div><h3>🔥 BMR Calculator / 基础代谢计算器</h3><p>Estimate calories your body burns at rest.</p></div><button class="fav" data-fav="bmr">☆ Favorite</button></div><div class="grid"><div><label>Gender / 性别</label><select id="bmrGender"><option value="male">Male / 男</option><option value="female">Female / 女</option></select></div><div><label>Age / 年龄</label><input id="bmrAge" type="number"></div><div><label>Weight (kg) / 体重</label><input id="bmrWeight" type="number"></div><div><label>Height (cm) / 身高</label><input id="bmrHeight" type="number"></div></div><button class="calc" data-calc="bmr">Calculate / 计算</button><div id="bmrResult" class="result"></div></section>
+
+<section id="tdee" class="card"><div class="head"><div><h3>🏃 TDEE Calculator / 每日消耗计算器</h3><p>Estimate daily maintenance calories.</p></div><button class="fav" data-fav="tdee">☆ Favorite</button></div><div class="grid"><div><label>BMR / 基础代谢</label><input id="tdeeBMR" type="number"></div><div><label>Activity Level / 活动量</label><select id="tdeeActivity"><option value="1.2">Sedentary / 久坐</option><option value="1.375">Light exercise / 轻度运动</option><option value="1.55">Moderate exercise / 中度运动</option><option value="1.725">Very active / 高活动</option></select></div></div><button class="calc" data-calc="tdee">Calculate / 计算</button><div id="tdeeResult" class="result"></div></section>
+
+<section id="water" class="card"><div class="head"><div><h3>💧 Water Intake Calculator / 饮水量计算器</h3><p>Estimate daily water intake based on body weight.</p></div><button class="fav" data-fav="water">☆ Favorite</button></div><div class="grid"><div><label>Weight (kg) / 体重</label><input id="waterWeight" type="number"></div></div><button class="calc" data-calc="water">Calculate / 计算</button><div id="waterResult" class="result"></div></section>
+
+<section id="ideal" class="card"><div class="head"><div><h3>🎯 Ideal Weight Calculator / 理想体重计算器</h3><p>Simple ideal weight range estimate by height.</p></div><button class="fav" data-fav="ideal">☆ Favorite</button></div><div class="grid"><div><label>Height (cm) / 身高</label><input id="idealHeight" type="number"></div></div><button class="calc" data-calc="ideal">Calculate / 计算</button><div id="idealResult" class="result"></div></section>
+
+<section class="seo"><h3>About SmartCalc Hub / 关于 SmartCalc Hub</h3><p>SmartCalc Hub provides professional calculators with practical guides, formulas, examples and FAQs for everyday business and personal use.</p><p>SmartCalc Hub 提供专业计算器、公式、例子与常见问题，适合日常商业、采购、物流、财务与健康计算。</p></section>
+</main>
+
+<footer>© 2026 SmartCalc Hub. All results are estimates only. / 所有结果仅供估算。</footer>
+
+<script>
+function getNum(id){return Number(document.getElementById(id).value || 0)}
+function money(v){return Number(v || 0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function pct(v){return Number(v || 0).toFixed(2)+'%'}
+function show(id,html){var e=document.getElementById(id);e.style.display='block';e.innerHTML=html}
+function openTool(id,btn){
+ document.querySelectorAll('.card').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ if(btn)btn.classList.add('active');
+ let recent=JSON.parse(localStorage.getItem('recentTools')||'[]').filter(x=>x!==id);recent.unshift(id);localStorage.setItem('recentTools',JSON.stringify(recent.slice(0,5)));
+ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+function loanGeneric(amount,annual,years,resultId){if(!amount||!years){show(resultId,'Please enter amount and tenure.<br>请输入金额和年限。');return}let months=years*12,r=annual/100/12,p=r===0?amount/months:amount*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1),total=p*months,interest=total-amount;show(resultId,`<b>Loan Amount / 贷款金额:</b> ${money(amount)}<br><b>Monthly Payment / 每月供款:</b> ${money(p)}<br><b>Total Interest / 总利息:</b> ${money(interest)}<br><b>Total Repayment / 总还款:</b> ${money(total)}<br><b>Tenure / 年限:</b> ${months} months`)}
+function calcSalary(){let input=getNum('salGross'),tax=getNum('salTax'),ded=getNum('salDeduct'),fix=getNum('salFixed'),period=document.getElementById('salPeriod').value;if(!input){show('salaryResult','Please enter salary.<br>请输入薪水。');return}let mg,ag;if(period==='monthly'){mg=input;ag=input*12}else{ag=input;mg=input/12}let mt=mg*tax/100,md=mg*ded/100,net=mg-mt-md-fix;show('salaryResult',`<b>Monthly Gross / 每月总薪:</b> ${money(mg)}<br><b>Monthly Tax / 每月税:</b> ${money(mt)}<br><b>Monthly Deduction / 每月扣款:</b> ${money(md)}<br><b>Monthly Fixed Deduction / 每月固定扣款:</b> ${money(fix)}<br><b>Monthly Net / 每月净薪:</b> ${money(net)}<br><br><b>Annual Gross / 年总薪:</b> ${money(ag)}<br><b>Annual Tax / 年税:</b> ${money(mt*12)}<br><b>Annual Deduction / 年扣款:</b> ${money(md*12)}<br><b>Annual Fixed Deduction / 年固定扣款:</b> ${money(fix*12)}<br><b>Annual Net / 年净薪:</b> ${money(net*12)}`)}
+function calcProfit(){let cost=getNum('profitCost'),sell=getNum('profitSell');if(!cost||!sell){show('profitResult','Please enter cost and selling price.<br>请输入成本价和售价。');return}let profit=sell-cost;show('profitResult',`<b>Profit / 利润:</b> ${money(profit)}<br><b>Margin / 利润率:</b> ${pct(profit/sell*100)}<br><b>Markup / 加价率:</b> ${pct(profit/cost*100)}`)}
+function calcQuantity(){let s=getNum('qStart'),e=getNum('qEnd'),p=getNum('qPack'),c=getNum('qCarton');if(!s||!e||e<s){show('quantityResult','Please enter valid numbers.<br>请输入正确号码。');return}let total=e-s+1,html=`<b>Total Quantity / 总数量:</b> ${total.toLocaleString()} pcs<br>`;if(p>0){let packs=total/p;html+=`<b>Total Packs / 总包数:</b> ${packs.toLocaleString(undefined,{maximumFractionDigits:2})} packs<br>`;if(c>0)html+=`<b>Total Cartons / 总箱数:</b> ${(packs/c).toLocaleString(undefined,{maximumFractionDigits:2})} cartons<br>`}show('quantityResult',html)}
+function calcPackaging(){let total=getNum('packTotalQty'),qpp=getNum('packQtyPerPack'),ppc=getNum('packPerCarton'),cpp=getNum('cartonPerPallet');if(!total||!qpp||!ppc){show('packagingResult','Please enter required fields.<br>请输入必要资料。');return}let fullPacks=Math.floor(total/qpp),balQty=total%qpp,decPacks=total/qpp,fullCartons=Math.floor(fullPacks/ppc),balPacks=fullPacks%ppc,decCartons=decPacks/ppc;let html=`<b>Total Quantity / 总数量:</b> ${total.toLocaleString()} pcs<br><b>Total Packs / 总包数:</b> ${decPacks.toLocaleString(undefined,{maximumFractionDigits:2})} packs<br><b>Pack Breakdown / 包装明细:</b> ${fullPacks.toLocaleString()} full packs${balQty>0?' + '+balQty.toLocaleString()+' pcs':''}<br><br><b>Total Cartons / 总箱数:</b> ${decCartons.toLocaleString(undefined,{maximumFractionDigits:2})} cartons<br><b>Carton Breakdown / 箱数明细:</b> ${fullCartons.toLocaleString()} full cartons`;if(balPacks>0||balQty>0)html+=` + ${balPacks>0?balPacks.toLocaleString()+' packs':''}${balQty>0?(balPacks>0?' + ':'')+balQty.toLocaleString()+' pcs':''}`;if(cpp>0)html+=`<br><br><b>Total Pallets / 总托盘:</b> ${(decCartons/cpp).toLocaleString(undefined,{maximumFractionDigits:2})} pallets`;show('packagingResult',html)}
+function calcCBM(){let l=getNum('cbmL'),w=getNum('cbmW'),h=getNum('cbmH'),q=getNum('cbmQty'),u=document.getElementById('cbmUnit').value;if(!l||!w||!h||!q){show('cbmResult','Please fill in all fields.<br>请填写所有资料。');return}if(u==='mm'){l/=1000;w/=1000;h/=1000}else if(u==='cm'){l/=100;w/=100;h/=100}else if(u==='inch'){l*=0.0254;w*=0.0254;h*=0.0254}let per=l*w*h;show('cbmResult',`<b>CBM per Unit / 每单位 CBM:</b> ${per.toFixed(6)} m³<br><b>Total CBM / 总 CBM:</b> ${(per*q).toFixed(6)} m³`)}
+function calcVol(){let l=getNum('volL'),w=getNum('volW'),h=getNum('volH'),d=getNum('volDiv');if(!l||!w||!h){show('volResult','Please enter dimensions.<br>请输入尺寸。');return}show('volResult',`<b>Volumetric Weight / 体积重量:</b> ${money(l*w*h/d)} kg<br><b>Formula / 公式:</b> L × W × H ÷ ${d}`)}
+function calcMOQ(){let need=getNum('moqNeed'),m=getNum('moqMultiple');if(!need||!m){show('moqResult','Please enter required quantity and MOQ.');return}let order=Math.ceil(need/m)*m;show('moqResult',`<b>Required Quantity / 需要数量:</b> ${need.toLocaleString()}<br><b>Order Quantity / 订购数量:</b> ${order.toLocaleString()}<br><b>Excess Quantity / 多余数量:</b> ${(order-need).toLocaleString()}`)}
+function calcSaving(){let oldp=getNum('oldPrice'),newp=getNum('newPrice'),qty=getNum('annualQty');if(!oldp||!newp||!qty){show('savingResult','Please enter all fields.');return}let per=oldp-newp,total=per*qty;show('savingResult',`<b>Saving per Unit / 每件节省:</b> ${money(per)}<br><b>Annual Saving / 年节省:</b> ${money(total)}<br><b>Saving % / 节省百分比:</b> ${pct(per/oldp*100)}`)}
+function calcCurMargin(){let supplier=getNum('cmSupplier'),rate=getNum('cmRate'),sell=getNum('cmSelling');if(!supplier||!rate||!sell){show('curMarginResult','Please enter all fields.<br>请填写所有资料。');return}let cost=supplier*rate,profit=sell-cost;show('curMarginResult',`<b>Converted Cost / 换算成本:</b> ${money(cost)}<br><b>Profit / 利润:</b> ${money(profit)}<br><b>Margin / 利润率:</b> ${pct(profit/sell*100)}`)}
+function calcUnit(){let v=getNum('unitValue'),t=document.getElementById('unitType').value;if(!v){show('unitResult','Please enter value.');return}let map={mm_cm:[v/10,'cm'],cm_mm:[v*10,'mm'],cm_m:[v/100,'m'],m_cm:[v*100,'cm'],inch_mm:[v*25.4,'mm'],mm_inch:[v/25.4,'inch'],kg_lb:[v*2.20462,'lb'],lb_kg:[v/2.20462,'kg']};show('unitResult',`<b>Result / 结果:</b> ${money(map[t][0])} ${map[t][1]}`)}
+function calcVAT(){let amount=getNum('vatAmount'),rate=getNum('vatRate'),mode=document.getElementById('vatMode').value;if(!amount){show('vatResult','Please enter amount.');return}if(mode==='add'){let tax=amount*rate/100;show('vatResult',`<b>Tax / 税额:</b> ${money(tax)}<br><b>Total Amount / 总金额:</b> ${money(amount+tax)}`)}else{let base=amount/(1+rate/100),tax=amount-base;show('vatResult',`<b>Base Amount / 未税金额:</b> ${money(base)}<br><b>Tax / 税额:</b> ${money(tax)}`)}}
+function calcMarkup(){let cost=getNum('markupCost'),rate=getNum('markupRate');if(!cost){show('markupResult','Please enter cost.');return}let profit=cost*rate/100;show('markupResult',`<b>Selling Price / 售价:</b> ${money(cost+profit)}<br><b>Profit / 利润:</b> ${money(profit)}`)}
+function calcDiscount(){let price=getNum('discountPrice'),rate=getNum('discountRate');if(!price){show('discountResult','Please enter price.');return}let save=price*rate/100;show('discountResult',`<b>Savings / 节省:</b> ${money(save)}<br><b>Final Price / 折后价:</b> ${money(price-save)}`)}
+function calcBreakEven(){let fixed=getNum('beFixed'),sell=getNum('beSell'),variable=getNum('beVar');if(!fixed||!sell||sell<=variable){show('breakevenResult','Please enter valid values.');return}show('breakevenResult',`<b>Break-even Quantity / 盈亏平衡数量:</b> ${Math.ceil(fixed/(sell-variable)).toLocaleString()} units`)}
+function calcSelling(){let cost=getNum('sellCost'),margin=getNum('sellMargin');if(!cost||!margin||margin>=100){show('sellingResult','Please enter valid cost and margin.');return}let price=cost/(1-margin/100);show('sellingResult',`<b>Selling Price / 售价:</b> ${money(price)}<br><b>Profit / 利润:</b> ${money(price-cost)}`)}
+function calcBMI(){let w=getNum('bmiWeight'),h=getNum('bmiHeight')/100;if(!w||!h){show('bmiResult','Please enter weight and height.');return}let bmi=w/(h*h),status=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';show('bmiResult',`<b>BMI:</b> ${bmi.toFixed(1)}<br><b>Category / 分类:</b> ${status}`)}
+function calcBMR(){let g=document.getElementById('bmrGender').value,age=getNum('bmrAge'),w=getNum('bmrWeight'),h=getNum('bmrHeight');if(!age||!w||!h){show('bmrResult','Please enter all fields.');return}let bmr=10*w+6.25*h-5*age+(g==='male'?5:-161);show('bmrResult',`<b>BMR / 基础代谢:</b> ${money(bmr)} kcal/day`);document.getElementById('tdeeBMR').value=Math.round(bmr)}
+function calcTDEE(){let b=getNum('tdeeBMR'),a=getNum('tdeeActivity');if(!b){show('tdeeResult','Please enter BMR.');return}let t=b*a;show('tdeeResult',`<b>Maintenance Calories / 维持热量:</b> ${money(t)} kcal/day<br><b>Fat Loss Target / 减脂参考:</b> ${money(t-500)} kcal/day<br><b>Muscle Gain Target / 增肌参考:</b> ${money(t+300)} kcal/day`)}
+function calcWater(){let w=getNum('waterWeight');if(!w){show('waterResult','Please enter weight.');return}show('waterResult',`<b>Recommended Water Intake / 建议饮水量:</b> ${money(w*35/1000)} L/day`)}
+function calcIdeal(){let h=getNum('idealHeight')/100;if(!h){show('idealResult','Please enter height.');return}show('idealResult',`<b>Ideal Weight Range / 理想体重范围:</b> ${money(18.5*h*h)} kg - ${money(24.9*h*h)} kg`)}
+
+document.addEventListener('DOMContentLoaded',function(){
+ if(localStorage.getItem('darkMode')==='1')document.body.classList.add('dark');
+ document.getElementById('darkBtn').addEventListener('click',function(){document.body.classList.toggle('dark');localStorage.setItem('darkMode',document.body.classList.contains('dark')?'1':'0')});
+ document.querySelectorAll('.tool').forEach(btn=>btn.addEventListener('click',function(){openTool(this.dataset.tool,this)}));
+ document.querySelectorAll('.fav').forEach(btn=>btn.addEventListener('click',function(){let id=this.dataset.fav;let fav=JSON.parse(localStorage.getItem('favorites')||'[]');if(fav.includes(id)){fav=fav.filter(x=>x!==id);this.innerText='☆ Favorite'}else{fav.push(id);this.innerText='★ Favorite'}localStorage.setItem('favorites',JSON.stringify(fav))}));
+ document.querySelectorAll('.calc').forEach(btn=>btn.addEventListener('click',function(){let c=this.dataset.calc;if(c==='salary')calcSalary();if(c==='loan')loanGeneric(getNum('loanAmount'),getNum('loanRate'),getNum('loanYears'),'loanResult');if(c==='car')loanGeneric(getNum('carPrice')-getNum('carDown'),getNum('carRate'),getNum('carYears'),'carResult');if(c==='mortgage')loanGeneric(getNum('housePrice')-getNum('houseDown'),getNum('houseRate'),getNum('houseYears'),'houseResult');if(c==='currency')show('currencyResult','<b>Converted Amount / 换算金额:</b> '+money(getNum('curAmount')*getNum('curRate')));if(c==='profit')calcProfit();if(c==='quantity')calcQuantity();if(c==='packaging')calcPackaging();if(c==='cbm')calcCBM();if(c==='vol')calcVol();if(c==='moq')calcMOQ();if(c==='saving')calcSaving();if(c==='curmargin')calcCurMargin();if(c==='unit')calcUnit();if(c==='vat')calcVAT();if(c==='markup')calcMarkup();if(c==='discount')calcDiscount();if(c==='breakeven')calcBreakEven();if(c==='selling')calcSelling();if(c==='bmi')calcBMI();if(c==='bmr')calcBMR();if(c==='tdee')calcTDEE();if(c==='water')calcWater();if(c==='ideal')calcIdeal();}));
+ document.getElementById('search').addEventListener('input',function(){let q=this.value.toLowerCase();document.querySelectorAll('.tool').forEach(btn=>btn.classList.toggle('hidden',!btn.innerText.toLowerCase().includes(q)))});
+});
+</script>
+</body>
+</html>
